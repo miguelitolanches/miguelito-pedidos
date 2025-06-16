@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miguelito Lanches - Pedidos Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fefefe;
+      color: #333;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    img.logo {
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+    h1, h2 {
+      color: #c40052;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    select, textarea, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #c40052;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #a00042;
+    }
+  </style>
+</head>
+<body>
+  <img src="/mnt/data/MIGUELITO.png" alt="Miguelito Lanches" class="logo" />
+  <h1>Faça seu Pedido</h1>
+  <label for="itens">Escolha seus itens:</label>
+  <textarea id="itens" rows="8" placeholder="Ex: X-Bacon, Batata Recheada de Frango, Refrigerante 2L Coca..."></textarea>
+
+  <label for="nome">Seu nome:</label>
+  <input type="text" id="nome" placeholder="Digite seu nome" />
+
+  <label for="endereco">Endereço de entrega:</label>
+  <input type="text" id="endereco" placeholder="Rua, número, bairro" />
+
+  <label for="pagamento">Forma de pagamento:</label>
+  <select id="pagamento">
+    <option value="PIX">PIX</option>
+    <option value="Dinheiro">Dinheiro</option>
+    <option value="Cartão">Cartão</option>
+  </select>
+
+  <button onclick="enviarPedido()">Enviar para o WhatsApp</button>
+
+  <script>
+    function enviarPedido() {
+      const itens = document.getElementById('itens').value;
+      const nome = document.getElementById('nome').value;
+      const endereco = document.getElementById('endereco').value;
+      const pagamento = document.getElementById('pagamento').value;
+
+      const msg = `*PEDIDO MIGUELITO LANCHES*%0A%0A` +
+        `*Itens:* %0A${itens}%0A%0A` +
+        `*Nome:* ${nome}%0A` +
+        `*Endereço:* ${endereco}%0A` +
+        `*Pagamento:* ${pagamento}`;
+
+      const url = `https://wa.me/5547991103945?text=${msg}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+  <p style="text-align:center; margin-top:40px; font-size:14px; color:#888">© Miguelito Lanches - 2025</p>
+</body>
+</html>
